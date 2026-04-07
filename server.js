@@ -8,6 +8,7 @@ app.use(cors());
 app.use(express.json());
 connectDB();
 
+app.use('/api/stocks', require('./routes/stockRoutes'));
 
 app.get('/', (req, res) => {
   res.send('Stock Data Pipeline API is running');
