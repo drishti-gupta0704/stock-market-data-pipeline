@@ -19,9 +19,9 @@ const transformStockData = (apiData, symbol) => {
     const close = parseFloat(latestData["4. close"]);
     const volume = parseInt(latestData["5. volume"]);
 
-    const priceChange = close - open;
-    const percentChange = ((priceChange / open) * 100).toFixed(2);
-
+    const priceChange = parseFloat((close - open).toFixed(2));
+    const percentChange = parseFloat(((priceChange / open) * 100).toFixed(2));
+    
     return {
       symbol,
       date: latestDate,
