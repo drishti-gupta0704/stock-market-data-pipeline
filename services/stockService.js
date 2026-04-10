@@ -1,5 +1,6 @@
 
 const axios = require('axios');
+const { transformStockData } = require('./transformService');
 
 const fetchStockData = async (symbol) => {
   try {
@@ -8,8 +9,8 @@ const fetchStockData = async (symbol) => {
     const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${API_KEY}`;
 
     const response = await axios.get(url);
-
-    return response.data;
+    const cleanData = transformStockData(response.data, symbol);
+    return cleanData;
 
   } catch (error) {
     console.error('Error fetching stock data:', error.message);

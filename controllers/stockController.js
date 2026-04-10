@@ -8,7 +8,6 @@ const getStockData = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      symbol,
       data
     });
 
