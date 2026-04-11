@@ -1,6 +1,7 @@
 
 const axios = require('axios');
 const { transformStockData } = require('./transformService');
+const { saveStockData } = require('./dbService');
 
 const fetchStockData = async (symbol) => {
   try {
@@ -10,7 +11,9 @@ const fetchStockData = async (symbol) => {
 
     const response = await axios.get(url);
     const cleanData = transformStockData(response.data, symbol);
-    return cleanData;
+    // 
+    const savedData = await saveStockData(cleanData);
+    return savedData;
 
   } catch (error) {
     console.error('Error fetching stock data:', error.message);
