@@ -23,4 +23,9 @@ const saveStockData = async (data) => {
   }
 };
 
+const getLatestStock = async (symbol) => {
+  return await Stock.findOne({ symbol })
+    .sort({ date: -1 }); 
+};
+
 module.exports = { saveStockData };
