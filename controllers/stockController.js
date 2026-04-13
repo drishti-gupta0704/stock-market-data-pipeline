@@ -1,5 +1,6 @@
 
 const { fetchStockData } = require('../services/stockService');
+const { getLatestStock, getStockHistory} = require('../services/dbService');
 
 const getStockData = async (req, res) => {
   try {
@@ -19,4 +20,35 @@ const getStockData = async (req, res) => {
   }
 };
 
-module.exports = { getStockData };
+
+const getLatestStockData = async (req, res) => {
+  try {
+    const { symbol } = req.params;
+
+    const data = await getLatestStock(symbol);
+
+    res.json({ success: true, data });
+
+  } catch (err) {
+    res.status(500).json({ success: false });
+  }
+};
+
+const getStockHistoryData = async (req, res) => {
+  try {
+    const { symbol } = req.params;
+
+    const data = await getStockHistory(symbol);
+
+    res.json({ success: true, data });
+
+  } catch (err) {
+    res.status(500).json({ success: false });
+  }
+};
+
+module.exports = {
+  getStockData,
+  getLatestStockData,
+  getStockHistoryData
+};
