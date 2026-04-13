@@ -7,7 +7,8 @@ const {
   getStockHistoryData
 } = require('../controllers/stockController');
 
-router.get('/:symbol', getStockData);
+// router.get('/:symbol', getStockData);
+router.get('/fetch/:symbol', getStockData);
 router.get('/:symbol', getLatestStockData);
 router.get('/history/:symbol', getStockHistoryData);
 
