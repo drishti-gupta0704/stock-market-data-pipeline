@@ -28,4 +28,11 @@ const getLatestStock = async (symbol) => {
     .sort({ date: -1 }); 
 };
 
-module.exports = { saveStockData };
+const getStockHistory = async (symbol) => {
+  return await Stock.find({ symbol })
+    .sort({ date: -1 }); 
+};
+
+module.exports = { saveStockData,
+                 getLatestStock,
+                 getStockHistory };
