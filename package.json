@@ -21,9 +21,11 @@
   "homepage": "https://github.com/drishti-gupta0704/stock-market-data-pipeline#readme",
   "dependencies": {
     "axios": "^1.14.0",
+    "bull": "^4.16.5",
     "cors": "^2.8.6",
     "dotenv": "^17.4.1",
     "express": "^5.2.1",
+    "ioredis": "^5.10.1",
     "mongoose": "^9.4.1"
   }
 }
