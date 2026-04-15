@@ -8,6 +8,8 @@ app.use(cors());
 app.use(express.json());
 connectDB();
 
+require('./cron/stockCron'); 
+
 app.use('/api/stocks', require('./routes/stockRoutes'));
 
 app.get('/', (req, res) => {
