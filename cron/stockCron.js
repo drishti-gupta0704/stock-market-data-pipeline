@@ -2,7 +2,7 @@
 const cron = require('node-cron');
 const stockQueue = require('../queues/stockQueue');
 
-const symbols = ['AAPL', 'TSLA', 'GOOGL'];
+const symbols = ['AAPL', 'TSLA', 'GOOGL', 'MSFT', 'AMZN'];
 
 cron.schedule('*/10 * * * *', async () => {
   console.log('Running stock cron job...');
