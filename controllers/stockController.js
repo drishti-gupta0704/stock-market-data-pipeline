@@ -38,8 +38,9 @@ const getLatestStockData = async (req, res) => {
 const getStockHistoryData = async (req, res) => {
   try {
     const { symbol } = req.params;
-
-    const data = await getStockHistory(symbol);
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const data = await getStockHistory(symbol, page, limit);
 
     res.json({ success: true, data });
 
