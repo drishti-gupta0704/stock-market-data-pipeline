@@ -28,9 +28,13 @@ const getLatestStock = async (symbol) => {
     .sort({ date: -1 }); 
 };
 
-const getStockHistory = async (symbol) => {
+const getStockHistory = async (symbol, page = 1, limit = 10) => {
+  const skip = (page - 1) * limit;
+  
   return await Stock.find({ symbol })
-    .sort({ date: -1 }); 
+    .sort({ date: -1 })
+    .skip(skip)
+    .limit(limit);
 };
 
 module.exports = { saveStockData,
