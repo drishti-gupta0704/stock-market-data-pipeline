@@ -1,6 +1,7 @@
 
 const { fetchStockData } = require('../services/stockService');
 const { getLatestStock, getStockHistory} = require('../services/dbService');
+const logger = require('../utils/logger');
 
 const getStockData = async (req, res) => {
   try {
@@ -24,12 +25,12 @@ const getStockData = async (req, res) => {
 const getLatestStockData = async (req, res) => {
   try {
     const { symbol } = req.params;
-
     const data = await getLatestStock(symbol);
-
+    logger.info(`Fetched latest data for ${symbol}`);
     res.json({ success: true, data });
 
   } catch (err) {
+    logger.error(`Error fetching data: ${err.message}`);
     res.status(500).json({ success: false });
   }
 };
